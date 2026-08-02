@@ -1,0 +1,47 @@
+---
+title: "Geografías del riesgo en Colombia"
+subtitle: "Delitos, victimización y estructura rural"
+author: "Juan Camilo Guerra y Alejandro Gómez"
+date: "2023 · edición reproducible 2026"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: flatly
+    highlight: tango
+---
+
+## Resumen
+
+Este estudio examina 569.127 registros administrativos de delitos en Colombia, patrones de victimización en Bogotá y la distribución municipal de cultivos ilícitos en 2015. El análisis combina agregación municipal, correlación de Pearson, tablas de contingencia y visualización exploratoria en R. Se observa una asociación positiva alta entre hurtos y homicidios agregados por municipio (`r = 0,839`), diferencias marcadas en la composición por sexo según la temática y una concentración territorial de municipios con elevada participación de cultivos ilícitos en el sur y occidente del país.
+
+## Preguntas y método
+
+El módulo de seguridad agrega hurtos a personas y residencias, contrasta su frecuencia con homicidios y caracteriza Bogotá por arma, sexo y edad. El módulo rural resume producción y áreas agrícolas entre 2007 y 2015, y calcula la proporción de área ilícita sobre el total sembrado municipal.
+
+## Resultados
+
+### Asociación municipal
+
+La correlación reportada es alta y positiva, pero está calculada sobre conteos absolutos. Los municipios más poblados tienden a acumular más registros de ambos tipos; por eso el resultado no debe interpretarse como evidencia de causalidad ni como comparación de riesgo.
+
+### Bogotá
+
+De 104.465 registros clasificados, 38% fueron agrupados como “otra”, 34% no reportaron empleo de armas, 16% involucraron arma blanca y 11% arma de fuego. La victimización masculina domina en homicidios y hurtos; la femenina es mayoritaria en delitos sexuales y violencia intrafamiliar.
+
+### Dinámica rural
+
+El ranking de 2015 concentra municipios del Putumayo, Nariño, Cauca y otros territorios del sur y occidente. Las hipótesis sobre clima, informalidad, pobreza y presencia de actores armados deben considerarse interpretaciones contextuales: no fueron probadas causalmente en el ejercicio.
+
+## Limitaciones
+
+- Los registros administrativos dependen de denuncia y cobertura institucional.
+- Los conteos no están ajustados por población.
+- El script histórico tenía una inconsistencia en la razón de homicidios por sexo; la versión revisada filtra homicidios antes del cálculo.
+- Los microdatos originales no fueron adjuntados a esta edición; se publican tablas derivadas y materiales históricos.
+
+## Reproducibilidad
+
+El código revisado está en `R/analysis.R`; el script original se conserva sin modificaciones en `archive/original_analysis.R`.
+

@@ -1,0 +1,8 @@
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+data/raw/*.csv
+data/raw/*.xlsx
+!data/raw/README.md
+.qa/

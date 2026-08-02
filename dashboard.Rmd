@@ -1,0 +1,85 @@
+---
+title: "Geografías del riesgo"
+subtitle: "Delitos, victimización y estructura rural en Colombia"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    theme: flatly
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+library(flexdashboard)
+library(scales)
+weapons <- read_csv("data/derived/bogota_weapons.csv", show_col_types = FALSE)
+gender <- read_csv("data/derived/bogota_gender_crime.csv", show_col_types = FALSE)
+illicit <- read_csv("data/derived/illicit_rank_2015.csv", show_col_types = FALSE)
+```
+
+Row {data-height=180}
+-------------------------------------
+
+### Registros analizados
+
+```{r}
+valueBox("569.127", caption = "registros administrativos", icon = "fa-database", color = "#143642")
+```
+
+### Correlación municipal
+
+```{r}
+valueBox("0,839", caption = "hurtos ↔ homicidios", icon = "fa-link", color = "#D16B4F")
+```
+
+### Temáticas
+
+```{r}
+valueBox("12", caption = "categorías de delito", icon = "fa-layer-group", color = "#0E897B")
+```
+
+### Bogotá
+
+```{r}
+valueBox("104.465", caption = "registros clasificados por arma", icon = "fa-city", color = "#C69C3C")
+```
+
+Row {data-height=420}
+-------------------------------------
+
+### Arma empleada en Bogotá
+
+```{r}
+plot_ly(weapons, labels = ~weapon_type, values = ~count, type = "pie", hole = .66,
+        marker = list(colors = c("#D16B4F", "#0E897B", "#C69C3C", "#576A8F"))) |>
+  layout(showlegend = TRUE)
+```
+
+### Composición de víctimas por sexo
+
+```{r}
+gender_long <- gender |> pivot_longer(c(female, male), names_to = "sex", values_to = "count") |>
+  group_by(crime) |> mutate(share = count / sum(count))
+plot_ly(gender_long, x = ~share, y = ~reorder(crime, share), color = ~sex,
+        type = "bar", orientation = "h", colors = c("#D16B4F", "#143642")) |>
+  layout(barmode = "stack", xaxis = list(tickformat = ".0%", title = "Participación"), yaxis = list(title = ""))
+```
+
+Row {data-height=360}
+-------------------------------------
+
+### Municipios con mayor participación de cultivos ilícitos, 2015
+
+```{r}
+plot_ly(illicit, x = ~rev(rank), y = ~reorder(municipality, -rank), type = "bar",
+        orientation = "h", marker = list(color = "#0E897B"),
+        hovertemplate = "%{y}<extra>posición relativa</extra>") |>
+  layout(xaxis = list(title = "Orden en el informe original", autorange = "reversed"), yaxis = list(title = ""))
+```
+
+### Nota de lectura
+
+Los conteos administrativos reflejan denuncia y registro, no riesgo poblacional. La correlación es descriptiva y no implica causalidad. Para comparar municipios se requieren tasas por población y controles por periodo, cobertura y estructura demográfica.
+

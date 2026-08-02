@@ -1,0 +1,7 @@
+metric,value,note
+Registros de delitos,569127,Base administrativa original
+Variables,20,Base de delitos
+Temáticas,12,Categorías observadas
+Correlación hurtos-homicidios,0.8386416,Agregado municipal reportado
+Registros Bogotá armas,104465,Suma de cuatro categorías reclasificadas
+
