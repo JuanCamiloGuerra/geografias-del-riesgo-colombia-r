@@ -1,0 +1,49 @@
+---
+title: "Geographies of Risk in Colombia"
+subtitle: "Crime, victimisation and rural structures"
+author: "Juan Camilo Guerra and Alejandro Gómez"
+date: "2023 · reproducible edition 2026"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: flatly
+---
+
+## Abstract
+
+This study examines 569,127 administrative crime records in Colombia, victimisation patterns in Bogotá, and the municipal distribution of illicit crops in 2015. It uses municipal aggregation, Pearson correlation, contingency tables and exploratory visualisation in R.
+
+## Results
+
+### Municipal association
+
+The reported theft-homicide correlation is `r = 0.839`. It is based on absolute counts and does not constitute causal evidence or a direct comparison of risk.
+
+### Crime interpretation and analysis
+
+The original report identifies personal injuries as the most frequently recorded offence. Sexual offences, threats and theft from persons also show high frequencies. Residential burglary in Bogotá is almost four times the count in Cali. Small and rural municipalities appear more often in cattle theft, livestock-related crime and cargo piracy. Arauca stands out for kidnapping, with its capital and three municipalities in the top ten.
+
+The original interpretation notes that municipalities with more crime records tend to be more populous and recommends rates per 100,000 inhabitants. The web edition adds the need for comparable periods and controls for under-reporting and institutional coverage.
+
+### Victimisation in Bogotá
+
+Of 104,465 records, 40,123 were classified as “other”, 35,322 involved no weapon, 17,180 involved a sharp weapon and 11,840 involved a firearm. Gender composition varies substantially by offence.
+
+### Territorial interpretation and analysis of illicit crops
+
+Municipalities with the largest shares cluster in southern and western Colombia. The original report links this pattern to favourable climate, low educational attainment, informal employment, poverty and the presence of illegal armed groups.
+
+These relationships are preserved as contextual hypotheses from the original document. The available data do not estimate causal effects or statistically test those factors.
+
+## Limitations
+
+- Administrative records depend on reporting and institutional coverage.
+- Counts are not adjusted for population.
+- The revised version corrects a homicide filter missing from the historical script.
+- The original microdata were not supplied with this edition.
+
+## Reproducibility
+
+The revised code is stored in `R/analysis.R`; the original script remains in `archive/original_analysis.R`.

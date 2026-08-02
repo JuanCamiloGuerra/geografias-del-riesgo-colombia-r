@@ -9,39 +9,41 @@ output:
     toc_float: true
     code_folding: hide
     theme: flatly
-    highlight: tango
 ---
 
 ## Resumen
 
-Este estudio examina 569.127 registros administrativos de delitos en Colombia, patrones de victimización en Bogotá y la distribución municipal de cultivos ilícitos en 2015. El análisis combina agregación municipal, correlación de Pearson, tablas de contingencia y visualización exploratoria en R. Se observa una asociación positiva alta entre hurtos y homicidios agregados por municipio (`r = 0,839`), diferencias marcadas en la composición por sexo según la temática y una concentración territorial de municipios con elevada participación de cultivos ilícitos en el sur y occidente del país.
-
-## Preguntas y método
-
-El módulo de seguridad agrega hurtos a personas y residencias, contrasta su frecuencia con homicidios y caracteriza Bogotá por arma, sexo y edad. El módulo rural resume producción y áreas agrícolas entre 2007 y 2015, y calcula la proporción de área ilícita sobre el total sembrado municipal.
+Este estudio examina 569.127 registros administrativos de delitos en Colombia, patrones de victimización en Bogotá y la distribución municipal de cultivos ilícitos en 2015. Se emplean agregación municipal, correlación de Pearson, tablas de contingencia y visualización exploratoria en R.
 
 ## Resultados
 
 ### Asociación municipal
 
-La correlación reportada es alta y positiva, pero está calculada sobre conteos absolutos. Los municipios más poblados tienden a acumular más registros de ambos tipos; por eso el resultado no debe interpretarse como evidencia de causalidad ni como comparación de riesgo.
+La correlación reportada entre hurtos y homicidios es `r = 0,839`. Está calculada sobre conteos absolutos y no constituye evidencia causal ni una comparación directa de riesgo.
 
-### Bogotá
+### Interpretación y análisis de los delitos
 
-De 104.465 registros clasificados, 38% fueron agrupados como “otra”, 34% no reportaron empleo de armas, 16% involucraron arma blanca y 11% arma de fuego. La victimización masculina domina en homicidios y hurtos; la femenina es mayoritaria en delitos sexuales y violencia intrafamiliar.
+El informe original identifica las lesiones personales como el delito con más casos. Los delitos sexuales, amenazas y hurtos a personas también muestran frecuencias altas. El hurto a residencias en Bogotá es casi cuatro veces el de Cali. En abigeato, delitos relacionados con ganado y piratería terrestre aparecen con mayor frecuencia municipios pequeños y rurales. Arauca sobresale en secuestros, con la capital y tres municipios entre los diez primeros.
 
-### Dinámica rural
+La interpretación original concluye que los municipios con más delitos suelen ser los más poblados y recomienda calcular tasas por cada 100.000 habitantes. La edición web añade que también se requieren periodos comparables y controles por subregistro y cobertura institucional.
 
-El ranking de 2015 concentra municipios del Putumayo, Nariño, Cauca y otros territorios del sur y occidente. Las hipótesis sobre clima, informalidad, pobreza y presencia de actores armados deben considerarse interpretaciones contextuales: no fueron probadas causalmente en el ejercicio.
+### Victimización en Bogotá
+
+De 104.465 registros, 40.123 fueron clasificados como “otra”, 35.322 no reportaron empleo de armas, 17.180 involucraron arma blanca y 11.840 arma de fuego. La composición por sexo cambia sustancialmente según el delito.
+
+### Interpretación y análisis territorial de cultivos ilícitos
+
+Los municipios con mayores porcentajes se concentran en el sur y occidente. El informe original vincula este patrón con clima favorable, baja escolaridad, empleo informal, pobreza y presencia de grupos armados ilegales.
+
+Estas relaciones se conservan como hipótesis contextuales del documento original. Con los datos disponibles no se estimaron efectos causales ni se probaron estadísticamente esos factores.
 
 ## Limitaciones
 
 - Los registros administrativos dependen de denuncia y cobertura institucional.
 - Los conteos no están ajustados por población.
-- El script histórico tenía una inconsistencia en la razón de homicidios por sexo; la versión revisada filtra homicidios antes del cálculo.
-- Los microdatos originales no fueron adjuntados a esta edición; se publican tablas derivadas y materiales históricos.
+- La versión revisada corrige un filtro de homicidios ausente en el script histórico.
+- Los microdatos originales no fueron adjuntados a esta edición.
 
 ## Reproducibilidad
 
-El código revisado está en `R/analysis.R`; el script original se conserva sin modificaciones en `archive/original_analysis.R`.
-
+El código revisado está en `R/analysis.R`; el script original permanece en `archive/original_analysis.R`.
